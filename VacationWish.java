@@ -4,10 +4,8 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-
-import project.vacation.familyMember.FamilyMember;
+import project.vacation.rating.VacationRating;
 
 @Entity
 public class VacationWish {
@@ -17,20 +15,8 @@ public class VacationWish {
 	private String description;
 	private String place;
 	
-	@ManyToMany(mappedBy = "favouriteVacation")
-	Set<FamilyMember> likes;
-	
-	@OneToMany(mappedBy = "vacationWishes")
-	Set<VacationWish> ratings;
-
-	public Set<FamilyMember> getLikes() {
-		return likes;
-	}
-
-	public void setLikes(Set<FamilyMember> likes) {
-		this.likes = likes;
-	}
-	//-------------------------------------------------------
+	@OneToMany(mappedBy = "vacationWish")
+	Set<VacationRating> ratings;
 
 	public VacationWish() {
 		// TODO Auto-generated constructor stub

@@ -11,38 +11,37 @@ public class VacationRatingKey implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "familyMember_id")
-	String familyMemberId;
+	@Column(name = "id")
+	String id;
 	
-	@Column(name = "vacationWish_vacationWishId")
-	String vacationWishVacationWishId;
+	@Column(name = "vacation_wish_id")
+	String vacationWishId;
 
-	
-	public VacationRatingKey(String familyMemberId, String vacationWishVacationWishId) {
+	public VacationRatingKey(String id, String vacationWishId) {
 		super();
-		this.familyMemberId = familyMemberId;
-		this.vacationWishVacationWishId = vacationWishVacationWishId;
+		this.id = id;
+		this.vacationWishId = vacationWishId;
 	}
 
-	public String getFamilyMemberId() {
-		return familyMemberId;
+	public String getId() {
+		return id;
 	}
 
-	public void setFamilyMemberId(String familyMemberId) {
-		this.familyMemberId = familyMemberId;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public String getVacationWishVacationWishId() {
-		return vacationWishVacationWishId;
+	public String getVacationWishId() {
+		return vacationWishId;
 	}
 
-	public void setVacationWishVacationWishId(String vacationWishVacationWishId) {
-		this.vacationWishVacationWishId = vacationWishVacationWishId;
+	public void setVacationWishId(String vacationWishId) {
+		this.vacationWishId = vacationWishId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(familyMemberId, vacationWishVacationWishId);
+		return Objects.hash(id, vacationWishId);
 	}
 
 	@Override
@@ -54,8 +53,8 @@ public class VacationRatingKey implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		VacationRatingKey other = (VacationRatingKey) obj;
-		return Objects.equals(familyMemberId, other.familyMemberId)
-				&& Objects.equals(vacationWishVacationWishId, other.vacationWishVacationWishId);
+		return Objects.equals(id, other.id) && Objects.equals(vacationWishId, other.vacationWishId);
 	}
+	
 	
 }

@@ -16,22 +16,22 @@ public class VacationRating {
 	VacationRatingKey id;
 	
 	@ManyToOne
-	@MapsId("familyMember_id")
-	@JoinColumn(name = "familyMember_id")
-	FamilyMember familyMembers; // Könnte zu Problemen führen, da wir diesen namen schon in FamilyMemberService verwenden
+	@MapsId("id")
+	@JoinColumn(name = "id")
+	FamilyMember familyMember;
 	
 	@ManyToOne
-	@MapsId("vacationWish_vacationWishId")
-	@JoinColumn(name = "vacationWish_vacationWishId")
-	VacationWish vacationWishes;  // Gleiche Problem wie bei familyMember
+	@MapsId("vacationWishId")
+	@JoinColumn(name = "vacation_wish_id")
+	VacationWish vacationWish;
 	
 	int rating;
 
-	public VacationRating(VacationRatingKey id, FamilyMember familyMembers, VacationWish vacationWishes, int rating) {
+	public VacationRating(VacationRatingKey id, FamilyMember familyMember, VacationWish vacationWish, int rating) {
 		super();
 		this.id = id;
-		this.familyMembers = familyMembers;
-		this.vacationWishes = vacationWishes;
+		this.familyMember = familyMember;
+		this.vacationWish = vacationWish;
 		this.rating = rating;
 	}
 
@@ -44,19 +44,19 @@ public class VacationRating {
 	}
 
 	public FamilyMember getFamilyMember() {
-		return familyMembers;
+		return familyMember;
 	}
 
-	public void setFamilyMember(FamilyMember familyMembers) {
-		this.familyMembers = familyMembers;
+	public void setFamilyMember(FamilyMember familyMember) {
+		this.familyMember = familyMember;
 	}
 
 	public VacationWish getVacationWish() {
-		return vacationWishes;
+		return vacationWish;
 	}
 
-	public void setVacationWish(VacationWish vacationWishes) {
-		this.vacationWishes = vacationWishes;
+	public void setVacationWish(VacationWish vacationWish) {
+		this.vacationWish = vacationWish;
 	}
 
 	public int getRating() {

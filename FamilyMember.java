@@ -4,13 +4,9 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import project.vacation.rating.VacationRating;
-import project.vacation.vacationWish.VacationWish;
 
 @Entity
 public class FamilyMember {
@@ -20,25 +16,9 @@ public class FamilyMember {
 	private String name;
 	private String birthdate;
 	
-	@ManyToMany
-	@JoinTable(
-			name = "vacationWish_like",
-			joinColumns = @JoinColumn(name = "familyMember_id"),
-			inverseJoinColumns = @JoinColumn(name = "vacationWish_vacationWishId"))
-	Set<VacationWish> favouriteVacation;
-	
-	@OneToMany(mappedBy = "familyMembers")
+	@OneToMany(mappedBy = "familyMember")
 	Set<VacationRating> ratings;
 	
-	public Set<VacationWish> getFavouriteVacation() {
-		return favouriteVacation;
-	}
-
-	public void setFavouriteVacation(Set<VacationWish> favouriteVacation) {
-		this.favouriteVacation = favouriteVacation;
-	}
-	//-------------------------------------------------------
-
 	public FamilyMember() {
 		
 	}
@@ -49,6 +29,7 @@ public class FamilyMember {
 		this.birthdate = birthdate;
 		this.id = id;
 		this.name = name;
+		
 	}
 	
 	// N -to-M Relationship erstellen
