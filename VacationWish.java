@@ -4,8 +4,11 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import project.vacation.rating.VacationRating;
+import project.vacation.vacationPeriod.VacationPeriod;
 
 @Entity
 public class VacationWish {
@@ -18,16 +21,23 @@ public class VacationWish {
 	@OneToMany(mappedBy = "vacationWish")
 	Set<VacationRating> ratings;
 
+	@ManyToOne
+	@JoinColumn(name = "vacationId")
+	private VacationPeriod vacationFinal;
+	
 	public VacationWish() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public VacationWish(String description, String place, String vacationWishId) {
-		
+
+	public VacationWish(String vacationWishId, String description, String place, Set<VacationRating> ratings,
+			VacationPeriod vacationFinal) {
 		super();
 		this.vacationWishId = vacationWishId;
-		this.description =  description;
+		this.description = description;
 		this.place = place;
+		this.ratings = ratings;
+		this.vacationFinal = vacationFinal;
 	}
 
 	public String getVacationWishId() {
@@ -52,6 +62,26 @@ public class VacationWish {
 
 	public void setPlace(String place) {
 		this.place = place;
+	}
+
+
+	public Set<VacationRating> getRatings() {
+		return ratings;
+	}
+
+
+	public void setRatings(Set<VacationRating> ratings) {
+		this.ratings = ratings;
+	}
+
+
+	public VacationPeriod getVacationFinal() {
+		return vacationFinal;
+	}
+
+
+	public void setVacationFinal(VacationPeriod vacationFinal) {
+		this.vacationFinal = vacationFinal;
 	}
 	
 }
