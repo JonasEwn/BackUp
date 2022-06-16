@@ -9,6 +9,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class VacationRatingKey implements Serializable{
 
+	//Ist nicht unbedingt notwendig
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "id")
