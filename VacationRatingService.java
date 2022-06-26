@@ -24,6 +24,7 @@ public class VacationRatingService {
 	@Autowired
 	private VacationRatingRepository vacationRatingRepository;
 	
+	
 	public List<VacationRating> getVacationRatingList(){
 		ArrayList<VacationRating> RatingList = new ArrayList<>();
 		Iterator<VacationRating> itRating = vacationRatingRepository.findAll().iterator();
@@ -48,11 +49,19 @@ public class VacationRatingService {
 	
 	
 	
-	public void updateVacationRating(int rating, VacationRating vacationRating) {
+	public void updateVacationRating(int rating, VacationRatingObjekt vacationRatingObjekt) {
+		FamilyMember familyMember = familyMemberService.getFamilyMember(vacationRatingObjekt.getId());
+		VacationWish vacationWish = vacationWishService.getVacationWish(vacationRatingObjekt.getVacationWishId());
+		
+		VacationRatingKey vacationRatingKey = new VacationRatingKey(familyMember.getId(), vacationWish.getVacationWishId());
+		
+		VacationRating vacationRating = new VacationRating(vacationRatingKey, familyMember, vacationWish, rating +  vacationRatingObjekt.getRating());
+		//VacationRating vacationRating = new VacationRating(vacationRatingKey, familyMember, vacationWish, vacationRatingObjekt.getRating());
 		vacationRatingRepository.save(vacationRating);
 	}
 	
 	public void deleteVacationRating(VacationRatingKey vacationRatingKey) {
+
 		vacationRatingRepository.deleteById(vacationRatingKey);
 	}
 }

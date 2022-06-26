@@ -26,8 +26,8 @@ public class VacationRatingController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/VacationRating/{rating}")
-	public void updateVacationRating(@PathVariable int rating, @RequestBody VacationRating vacationRating) {
-		vacationRatingService.updateVacationRating(rating, vacationRating);
+	public void updateVacationRating(@PathVariable int rating, @RequestBody VacationRatingObjekt vacationRatingObjekt) {
+		vacationRatingService.updateVacationRating(rating, vacationRatingObjekt);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/VacationRating/{rating}")
