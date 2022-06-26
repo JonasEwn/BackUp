@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import project.vacation.rating.VacationRating;
 import project.vacation.vacationPeriod.VacationPeriod;
 
@@ -19,8 +22,9 @@ public class VacationWish {
 	private String place;
 	
 	@OneToMany(mappedBy = "vacationWish")
+	@JsonIgnore
 	Set<VacationRating> ratings;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "vacationId")
 	private VacationPeriod vacationFinal;
@@ -83,5 +87,4 @@ public class VacationWish {
 	public void setVacationFinal(VacationPeriod vacationFinal) {
 		this.vacationFinal = vacationFinal;
 	}
-	
 }

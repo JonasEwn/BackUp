@@ -7,9 +7,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import project.vacation.familyMember.FamilyMember;
+import project.vacation.familyMember.FamilyMemberService;
+import project.vacation.vacationWish.VacationWish;
+import project.vacation.vacationWish.VacationWishService;
+
 @Service
 public class VacationRatingService {
 
+	@Autowired
+	VacationWishService vacationWishService;
+	
+	@Autowired
+	FamilyMemberService familyMemberService;
+	
 	@Autowired
 	private VacationRatingRepository vacationRatingRepository;
 	
@@ -21,19 +32,27 @@ public class VacationRatingService {
 		return RatingList;
 	}
 	
-	public VacationRating getVacationRating(int rating) {
-		return vacationRatingRepository.findById(rating).orElse(null);
+	public VacationRating getVacationRating(VacationRatingKey vacationRatingKey) {
+		return vacationRatingRepository.findById(vacationRatingKey).orElse(null);
 	}
 	
-	public void addVacationRating(VacationRating vacationRating) {
+	public void addVacationRating(VacationRatingObjekt vacationRatingObjekt) {
+		FamilyMember familyMember = familyMemberService.getFamilyMember(vacationRatingObjekt.getId());
+		VacationWish vacationWish = vacationWishService.getVacationWish(vacationRatingObjekt.getVacationWishId());
+		
+		VacationRatingKey vacationRatingKey = new VacationRatingKey(familyMember.getId(), vacationWish.getVacationWishId());
+		
+		VacationRating vacationRating = new VacationRating(vacationRatingKey, familyMember, vacationWish, vacationRatingObjekt.getRating());
 		vacationRatingRepository.save(vacationRating);
 	}
+	
+	
 	
 	public void updateVacationRating(int rating, VacationRating vacationRating) {
 		vacationRatingRepository.save(vacationRating);
 	}
 	
-	public void deleteVacationRating(int rating) {
-		vacationRatingRepository.deleteById(rating);
+	public void deleteVacationRating(VacationRatingKey vacationRatingKey) {
+		vacationRatingRepository.deleteById(vacationRatingKey);
 	}
 }

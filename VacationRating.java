@@ -26,6 +26,10 @@ public class VacationRating {
 	VacationWish vacationWish;
 	
 	int rating;
+	
+	public VacationRating() {
+		
+	}
 
 	public VacationRating(VacationRatingKey id, FamilyMember familyMember, VacationWish vacationWish, int rating) {
 		super();

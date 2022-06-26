@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import project.vacation.rating.VacationRating;
 
 @Entity
@@ -17,6 +19,7 @@ public class FamilyMember {
 	private String birthdate;
 	
 	@OneToMany(mappedBy = "familyMember")
+	@JsonIgnore
 	Set<VacationRating> ratings;
 	
 	public FamilyMember() {
