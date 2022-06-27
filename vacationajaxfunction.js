@@ -1,159 +1,152 @@
-$(document).ready(function () {
-    loadDataTable();
+//-----------------------------------------------------------------------------//
+//Section FamilyMember
+// Laden der Tabelle FamilyMember
+$(document).ready(function(){
+	loadDataTable();
+	
+	$("#newFamilyMember").submit(function(){
+		postFamilyMember(event);
+		loadDataTable();
+		
+	});
+});
+//FamilyMember hinzufügen
+function postFamilyMember(event){
+	
+	// welche Daten werden benötigt
+	var formData = {
+		'id': $('input[name=IDP]').val(),
+		'name': $('input[name=VN]').val(),
+		'birthdate': $('input[name=GT]').val()
+	};
+	// Was soll mit den Eingegebenen Daten gemacht werden
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json',
+		url: '/FamilyMember',
+		data: JSON.stringify(formData),
+		success: function(data, textStatus, jQxhr){
+			loadDataTable();
+		},
+		error: function(jqXhr, textStatus, errorThrown) {
+			console.log(errorThrown);
+		}
+	});
+	event.preventDefault();
+}
+//FamilyMember Daten in Tabelle laden
+function loadDataTable(){
+	var table = $('#famtable').DataTable({
+		destroy: true,
+		"ajax": {
+			"url": "/FamilyMember",
+			"dataSrc": ""
+		},
+		"columns": [
+			{"data": "id"},
+			{"data": "name"},
+			{"data": "birthdate"}
+		]
+	});
+}
+// FamilyMember bearbeiten
+function updateFamilyMember(event){
+	
+	// welche Daten werden benötigt
+	var formData = {
+		'id': $('input[name=IDP]').val(),
+		'name': $('input[name=VN]').val(),
+		'birthdate': $('input[name=GT]').val()
+	};
+	// Was soll mit den Eingegebenen Daten gemacht werden
+	$.ajax({
+		type: 'PUT',
+		contentType: 'application/json',
+		url: '/FamilyMember',
+		data: JSON.stringify(formData),
+		success: function(data, textStatus, jQxhr){
+			loadDataTable();
+		},
+		error: function(jqXhr, textStatus, errorThrown) {
+			console.log(errorThrown);
+		}
+	});
+	event.preventDefault();
+}
 
-    $("#newFamilyMember").submit(funktion(), {
-        postFamilyMember(event) { }
-    });
 
-    $('#loadtable').click(function () {
-        loadDataTable();
-    });
+//-----------------------------------------------------------------------------//
+//Section VacationWish
+// Laden der Tabelle VacationWish
+$(document).ready(function(){
+	loadDataTable2();
+	
+	$("#newVacationWish").submit(function(){
+		postVacationWish(event);
+		loadDataTable2();
+	});
 });
 
-$(document).ready(function () {
-    loadDataTable();
-
-    $("#newVacationWish").submit(funktion(), {
-        postVacationWish(event) { }
-    });
-
-    $('#loadtable').click(function () {
-        loadDataTable();
-    });
-});
-
-$(document).ready(function () {
-    loadDataTable();
-
-    $("#newVationPeriod").submit(funktion(), {
-        postVacationPeriod(event) { }
-    });
-
-    $('#loadtable').click(function () {
-        loadDataTable();
-    });
-});
-
-
-// Neues Familien Mitglied anlegen
-function postFamilyMember(event) {
-
-    var formData = {
-        'id': $('input[name=id]').val(),
-        'name': $('input[name=name]').val(),
-        'birthdate': $('input[name=birthdate]').val()
-    };
-
-    $.ajax({
-        type: 'POST',
-        contentType: 'application/json',
-        URL: '/FamilyMember',
-        data: JSON.stringify(formData),
-        success: function (data, textStatus, jQxhr) {
-            loadDataTable();
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
-
-    event.preventDefault();
+function postVacationWish(event){
+	
+	var formData = {
+		'vacationWishId': $('input[name=vacationwishid]').val(),
+		'description': $('input[name=BE]').val(),
+		'place': $('input[name=ORT]').val()
+	};
+	
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json',
+		url: '/VacationWish',
+		data: JSON.stringify(formData), // data we want to POST
+		success: function(data, textStatus, jQxhr) {
+			loadDataTable2();
+		},
+		error: function(jqXhr, textStatus, errorThrown) {
+			console.log(errorThrown);
+		}
+	});
+	event.preventDefault();
+}
+function loadDataTable2(){
+	var table = $('#urlaubtable').DataTable({
+		destroy: true,
+		"ajax": {
+			"url": "/VacationWish",
+			"dataSrc": ""
+		},
+		"columns":[
+			{"data": "vacationWishId"},
+			{"data": "description"},
+			{"data": "place"}
+		]
+	});
 }
 
-// Neuer Urlaubswunsch anlegen
-function postVacationWish(event) {
-
-    var formData = {
-        'vacationWishId': $('input[name=vacationWishId]').val(),
-        'place': $('input[name=place]').val(),
-        'description': $('input[name=description]').val()
-    };
-
-    $.ajax({
-        type: 'POST',
-        contentType: 'application/json',
-        URL: '/VacationWish',
-        data: JSON.stringify(formData),
-        success: function (data, textStatus, jQxhr) {
-            loadDataTable();
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
-
-    event.preventDefault();
+// Ende VacationWish Tabelle laden
+// VacationWish updaten
+function updateVacationWish(event){
+	
+	// welche Daten werden benötigt
+	var formData = {
+		'vacationWishId': $('input[name=vacationWishId]').val(),
+		'description': $('input[name=BE]').val(),
+		'place': $('input[name=Ort]').val()
+	};
+	// Was soll mit den Eingegebenen Daten gemacht werden
+	$.ajax({
+		type: 'PUT',
+		contentType: 'application/json',
+		url: '/VacationWish',
+		data: JSON.stringify(formData),
+		success: function(data, textStatus, jQxhr){
+			loadDataTable2();
+		},
+		error: function(jqXhr, textStatus, errorThrown) {
+			console.log(errorThrown);
+		}
+	});
+	event.preventDefault();
 }
-
-// Neuer Urlaub
-function postVacationWish(event) {
-
-    var formData = {
-        'vacationId': $('input[name=vacationId]').val(),
-        'title': $('input[name=title]').val(),
-        'timePeriod': $('input[name=timePeriod]').val()
-    };
-
-    $.ajax({
-        type: 'POST',
-        contentType: 'application/json',
-        URL: '/Vacation',
-        data: JSON.stringify(formData),
-        success: function (data, textStatus, jQxhr) {
-            loadDataTable();
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
-
-    event.preventDefault();
-}
-
-// Familien Mitglieder anzeigen
-function loadDataTable() {
-    var table = $('#familymembertable').DataTable({
-        destroy: true,
-        "ajax": {
-            "url": "/FamilyMember", //URL
-            "dataSrc": "" // Cause of flat JsonObjects
-        },
-        "columns": [
-            { "data": "id" },
-            { "data": "name" },
-            { "data": "birthdate" }
-        ]
-    });
-}
-
-// Urlaubswunsch anlegen
-function loadDataTable() {
-    var table = $('#vacationwishtable').DataTable({
-        destroy: true,
-        "ajax": {
-            "url": "/VacationWish", //URL
-            "dataSrc": "" // Cause of flat JsonObjects
-        },
-        "columns": [
-            { "data": "vacationWishId" },
-            { "data": "description" },
-            { "data": "place" }
-        ]
-    });
-}
-
-// Urlaub anlegen
-function loadDataTable() {
-    var table = $('#vacationperiodtable').DataTable({
-        destroy: true,
-        "ajax": {
-            "url": "/Vacation", //URL
-            "dataSrc": "" // Cause of flat JsonObjects
-        },
-        "columns": [
-            { "data": "vacationId" },
-            { "data": "title" },
-            { "data": "timePeriod" }
-        ]
-    });
-}
+// Ende VacationWish Tabelle hinzufügen

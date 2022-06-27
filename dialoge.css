@@ -1,0 +1,471 @@
+#body-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease-in-out;
+}
+
+.dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    box-shadow: 8px 8px 16px rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+#body-overlay.sichtbar, .dialog.sichtbar {
+    z-index: 2;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#anmelden-dialog {
+    z-index: 2;
+    width: 25%;
+}
+
+#urlaubswunsch-dialog {
+    width: 25%;
+}
+
+#urlaubbuchen-dialog {
+    width: 25%;
+}
+
+
+.dialog-schliessen-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 32px;
+    line-height: 32px;
+    color: rgba(0, 0, 0, 1);
+    text-decoration: none;
+}
+
+/* Styling für den AnmeldenButton */
+#anmelden-dialog {
+    background-color: darkgrey;
+    box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
+    border: 5px solid silver;
+}
+
+#anmelden-dialog .dialog-schliessen-button {
+    color: rgba(0, 0, 0, 1);
+}
+
+#anmelden-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#anmelden-dialog h3 {
+    margin: 0;
+    color: black;
+    text-align: center;
+    font-size: max(2.5vw, 1.1em);
+    text-shadow: 0px 0px 4px black;
+}
+
+#anmelden-dialog input {
+    width: 100%;
+    margin: 7px 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    vertical-align: middle;
+}
+
+#anmelden-dialog .eingabefeld {
+    padding: 14px 16px;
+    font-size: 17px;
+    line-height: 16px;
+    background: #f5f6f7;
+    border: 2px solid silver;
+    color: #1c1e21;
+    height: 50px;
+    box-shadow: inset 0px 0px 4px #222;
+}
+
+#anmelden-dialog .eingabefeld:focus-visible {
+    outline: none;
+    border: 2px solid #3a342c;
+}
+
+#anmelden-dialog input[type=submit] {
+    display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background-color: transparent;
+    border: 3px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .45s ease;
+    transition-property: background-color, color;
+}
+
+#anmelden-dialog input[type=submit]:hover {
+    color: white;
+    background-color: crimson;
+}
+
+/* Urlaubswunsch Button */
+
+#urlaubswunsch-dialog {
+    background-color: darkgrey;
+    box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
+    border: 5px solid silver;
+}
+
+#urlaubswunsch-dialog .dialog-schliessen-button {
+    color: rgba(0, 0, 0, 1);
+}
+
+#urlaubswunsch-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#urlaubswunsch-dialog h3 {
+    margin: 0;
+    color: black;
+    text-align: center;
+    font-size: max(2.5vw, 1.1em);
+    text-shadow: 0px 0px 4px black;
+}
+
+#urlaubswunsch-dialog input {
+    width: 100%;
+    margin: 7px 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    vertical-align: middle;
+}
+
+#urlaubswunsch-dialog .eingabefeld {
+    padding: 14px 16px;
+    font-size: 17px;
+    line-height: 16px;
+    background: #f5f6f7;
+    border: 2px solid silver;
+    color: #1c1e21;
+    height: 50px;
+    box-shadow: inset 0px 0px 4px #222;
+}
+
+#urlaubswunsch-dialog .eingabefeld:focus-visible {
+    outline: none;
+    border: 2px solid #3a342c;
+}
+
+#urlaubswunsch-dialog input[type=submit] {
+     display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background-color: transparent;
+    border: 3px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .45s ease;
+    transition-property: background-color, color;
+}
+
+#urlaubswunsch-dialog input[type=submit]:hover {
+    color: white;
+    background-color: crimson;
+}
+/* Urlaub buchen Button */
+
+#urlaubbuchen-dialog {
+    background-color: darkgrey;
+    box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
+    border: 5px solid silver;
+}
+
+#urlaubbuchen-dialog .dialog-schliessen-button {
+    color: rgba(0, 0, 0, 1);
+}
+
+#urlaubbuchen-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#urlaubbuchen-dialog h3 {
+    margin: 0;
+    color: black;
+    text-align: center;
+    font-size: max(2.5vw, 1.1em);
+    text-shadow: 0px 0px 4px black;
+}
+
+#urlaubbuchen-dialog input {
+    width: 100%;
+    margin: 7px 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    vertical-align: middle;
+}
+
+#urlaubbuchen-dialog .eingabefeld {
+    padding: 14px 16px;
+    font-size: 17px;
+    line-height: 16px;
+    background: #f5f6f7;
+    border: 2px solid silver;
+    color: #1c1e21;
+    height: 50px;
+    box-shadow: inset 0px 0px 4px #222;
+}
+
+#urlaubbuchen-dialog .eingabefeld:focus-visible {
+    outline: none;
+    border: 2px solid #3a342c;
+}
+
+#urlaubbuchen-dialog input[type=submit] {
+     display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background-color: transparent;
+    border: 3px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .45s ease;
+    transition-property: background-color, color;
+}
+
+#urlaubbuchen-dialog input[type=submit]:hover {
+    color: white;
+    background-color: crimson;
+}
+
+
+/* Priorität */
+#priorität-dialog {
+    background-color: darkgrey;
+    box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
+    border: 5px solid silver;
+}
+
+#priorität-dialog .dialog-schliessen-button {
+    color: rgba(0, 0, 0, 1);
+}
+
+#priorität-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#priorität-dialog h3 {
+    margin: 0;
+    color: black;
+    text-align: center;
+    font-size: max(2.5vw, 1.1em);
+    text-shadow: 0px 0px 4px black;
+}
+
+#priorität-dialog input {
+    width: 100%;
+    margin: 7px 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    vertical-align: middle;
+}
+
+#priorität-dialog .eingabefeld {
+    padding: 14px 16px;
+    font-size: 17px;
+    line-height: 16px;
+    background: #f5f6f7;
+    border: 2px solid silver;
+    color: #1c1e21;
+    height: 50px;
+    box-shadow: inset 0px 0px 4px #222;
+}
+
+#priorität-dialog .eingabefeld:focus-visible {
+    outline: none;
+    border: 2px solid #3a342c;
+}
+
+#priorität-dialog input[type=submit] {
+     display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background-color: transparent;
+    border: 3px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .45s ease;
+    transition-property: background-color, color;
+}
+
+#priorität-dialog input[type=submit]:hover {
+    color: white;
+    background-color: crimson;
+}
+
+/* Update 1 */
+#update1-dialog {
+    background-color: darkgrey;
+    box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
+    border: 5px solid silver;
+}
+
+#update1-dialog .dialog-schliessen-button {
+    color: rgba(0, 0, 0, 1);
+}
+
+#update1-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#update1-dialog h3 {
+    margin: 0;
+    color: black;
+    text-align: center;
+    font-size: max(2.5vw, 1.1em);
+    text-shadow: 0px 0px 4px black;
+}
+
+#update1-dialog input {
+    width: 100%;
+    margin: 7px 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    vertical-align: middle;
+}
+
+#update1-dialog .eingabefeld {
+    padding: 14px 16px;
+    font-size: 17px;
+    line-height: 16px;
+    background: #f5f6f7;
+    border: 2px solid silver;
+    color: #1c1e21;
+    height: 50px;
+    box-shadow: inset 0px 0px 4px #222;
+}
+
+#update1-dialog .eingabefeld:focus-visible {
+    outline: none;
+    border: 2px solid #3a342c;
+}
+
+#update1-dialog input[type=submit] {
+     display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background-color: transparent;
+    border: 3px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .45s ease;
+    transition-property: background-color, color;
+}
+
+#update1-dialog input[type=submit]:hover {
+    color: white;
+    background-color: crimson;
+}
+/* Update 2 */
+#update2-dialog {
+    background-color: darkgrey;
+    box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
+    border: 5px solid silver;
+}
+
+#update2-dialog .dialog-schliessen-button {
+    color: rgba(0, 0, 0, 1);
+}
+
+#update2-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#update2-dialog h3 {
+    margin: 0;
+    color: black;
+    text-align: center;
+    font-size: max(2.5vw, 1.1em);
+    text-shadow: 0px 0px 4px black;
+}
+
+#update2-dialog input {
+    width: 100%;
+    margin: 7px 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    vertical-align: middle;
+}
+
+#update2-dialog .eingabefeld {
+    padding: 14px 16px;
+    font-size: 17px;
+    line-height: 16px;
+    background: #f5f6f7;
+    border: 2px solid silver;
+    color: #1c1e21;
+    height: 50px;
+    box-shadow: inset 0px 0px 4px #222;
+}
+
+#update2-dialog .eingabefeld:focus-visible {
+    outline: none;
+    border: 2px solid #3a342c;
+}
+
+#update2-dialog input[type=submit] {
+     display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background-color: transparent;
+    border: 3px solid crimson;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .45s ease;
+    transition-property: background-color, color;
+}
+
+#update2-dialog input[type=submit]:hover {
+    color: white;
+    background-color: crimson;
+}
