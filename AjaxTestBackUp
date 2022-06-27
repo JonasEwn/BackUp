@@ -1,0 +1,50 @@
+/ Laden der Tabelle VacationWish
+$(document).ready(function(){
+	loadDataTable2();
+	
+	$("#newVacationWish").submit(function(){
+		postVacationWish(event);
+		loadDataTable2();
+	});
+});
+// VacationWish hinzufügen
+function postVacationWish(event){
+	
+	// welche Daten werden benötigt
+	var formData = {
+		'vacationWishId': $('input[name=vacationwishid]').val(),
+		'description': $('input[name=BE]').val(),
+		'place': $('input[name=ORT]').val()
+	};
+	// Was soll mit den Eingegebenen Daten gemacht werden
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json',
+		url: '/VacationWish',
+		data: JSON.stringify(formData),
+		success: function(data, textStatus, jQxhr){
+			loadDataTable2();
+		},
+		error: function(jqXhr, textStatus, errorThrown) {
+			console.log(errorThrown);
+		}
+	});
+	event.preventDefault();
+}
+// Ende Vacation hinzufügen
+//VacationWish Daten in Tabelle laden
+function loadDataTable2(){
+	var table = $('#urlaubtable').DataTable({
+		destroy: true,
+		"ajax": {
+			"url": "/VacationWish",
+			"dataSrc": ""
+		},
+		"columns": [
+			{"data": "vacationWishId"},
+			{"data": "description"},
+			{"data": "place"}
+		]
+	});
+}
+// Ende VacationWish Tabelle laden
