@@ -1,4 +1,5 @@
-/ Laden der Tabelle VacationWish
+//Diese Datei wird nicht mehr gebraucht
+// Laden der Tabelle VacationWish
 $(document).ready(function(){
 	loadDataTable2();
 	
