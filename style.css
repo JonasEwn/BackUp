@@ -12,6 +12,7 @@ html{
 a {
     text-decoration: none;
 }
+/* Standard div für alle */
 .container{
     min-height: 100vh;
     width: 100%;
@@ -19,6 +20,7 @@ a {
     align-items: center;
     justify-content: center;
 }
+/* Ende Standard div für alle */
 
 img{
     height: 100%;
@@ -45,6 +47,7 @@ P{
  .section-title span{
     color: crimson;
 }
+/* Button */
 .cta{
     display: inline-block;
     padding: 10px 30px;
@@ -83,6 +86,7 @@ P{
     color: white;
     background-color: crimson;
 }
+/* Ende Button */
 
 
 .brand h1{
@@ -146,13 +150,14 @@ P{
     padding: 20px;
     display: block;
 }
+/* Hintergrund der Navigation */
 #header .nav-list ul a::after {
     content: attr(data-after);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    color: rgba(240, 248, 255, 0.021);
+    color: rgba(240, 248, 255, 0.493);
     font-size: 10rem;
     letter-spacing: 50px;
     z-index: -1;
@@ -162,6 +167,7 @@ P{
     transform: translate(-50%, -50%) scale(1);
     letter-spacing: initial;
 }
+/* Rote Schrift wenn man über die navigation fährt */
 #header .nav-list ul li:hover a{
     color: crimson;
 }
@@ -207,6 +213,7 @@ P{
     transition: .3s ease;
     transition-property: top, bottom;
 }
+/* Hamburger Striche Positionierung*/
 #header .hamburger .bar::after{
     top: 8px;
 }
@@ -224,13 +231,13 @@ P{
 
 /* Hero Section */
 #hero{
-    background-image: url(./Users/jonas/Documents/BilderVacation);
+    background-image: url(file:///Users/jonas/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/Vacation/lib/public/img/urlaub.jpg);
     background-size: cover;
     background-position: top center;
     position: relative;
     z-index: 1;
 }
-
+/* Kontrast Hintergrund */
 #hero ::after {
     content: '';
     position: absolute;
@@ -248,6 +255,7 @@ P{
     padding: 0 50px;
     justify-content: flex-start;
 }
+/* text der Hero page */
 #hero h1{
     display: block;
     width: fit-content;
@@ -257,6 +265,7 @@ P{
     animation: text_reveal .50s ease forwards;
     animation-delay: 1s;
 }
+/* Animation des Textes, welches hintereinander revealed wird */
 #hero h1:nth-child(1){
     animation-delay: 1s;
 }
@@ -267,6 +276,9 @@ P{
     animation: text_reveal_name .50s ease forwards;
     animation-delay: 3s;
 }
+/* Ende Animation des Textes */
+
+/* ausfüllung der Animation */
 #hero h1 span{
     position: absolute;
     top: 0;
@@ -277,6 +289,7 @@ P{
     animation: text_reveal_box 1s ease;
     animation-delay: 1s;
 }
+/* reveal der span für den Text (dieses wird auch hintereinander revealed) */
 #hero h1:nth-child(1) span{
     animation-delay: 0.50s;
 }
@@ -286,6 +299,7 @@ P{
 #hero h1:nth-child(3) span{
     animation-delay: 2.5s;
 }
+/* ende reveal Span */
 
 /* End Hero Section */
 
@@ -316,7 +330,7 @@ P{
     flex-direction: column;
     padding: 30px;
     border-radius: 10px;
-    background-image: url(./Users/jonas/Documents/BilderVacation);
+    background-image: url(file:///Users/jonas/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/Vacation/lib/public/img/urlaub-bild.jpg);
     background-size: cover;
     margin: 10px 5%;
     position: relative;
@@ -438,7 +452,7 @@ P{
 }
 /* Urlaubswünsche Ende */
 
-/* Jetzt Anlegen */
+/* Jetzt Anlegen(Buchen Sektion) */
 #anlegen .anlegen{
     /* bild zuerst unten deswegen colum reverse */
     flex-direction: column-reverse; 
@@ -485,9 +499,9 @@ P{
     border: 7px solid crimson;
     z-index: -1;
 }
-/* Ende des Anlegen */
+/* Ende des Anlegen (Buchen Sektion) */
 
-/* contact secktion */
+/* contact Sektion */
 #contact .contact {
     flex-direction: column;
     max-width: 1200px;
@@ -570,7 +584,7 @@ P{
 }
 /* End footer */
 
-/* Keyframes für die Animation der span Boxen */
+/* Keyframes für die Animation */
 @keyframes hamburger_puls{
     0%{
         opacity: 1;
@@ -581,6 +595,7 @@ P{
         transform: scale(1.5);
     }
 }
+/* Animation der Span Boxen */
 @keyframes text_reveal_box{
     50%{
         width: 100%;
@@ -602,9 +617,10 @@ P{
         font-weight: 500px;
     }
 }
-/* Keyframes für die Animation der span Boxen */
+/* Ende Animation der Span Boxen */
+/* Keyframes für die Animation */
 
-/* Media Query für Tablet 0*/
+/* Media Query für Tablet/Tablet Version */
 @media only screen and (min-width: 768px){
     .cta{
         font-size: 2.5rem;
@@ -738,7 +754,7 @@ P{
         margin: 1.5%;
     }
 }
-/* Ende Media Query für Desktop */
+/* Ende MEdia Query für Desktop */
 
 
 
