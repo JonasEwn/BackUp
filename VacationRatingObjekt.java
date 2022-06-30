@@ -1,5 +1,7 @@
 package project.vacation.rating;
 
+//Fügt das rating zu den beiden Ids
+
 public class VacationRatingObjekt {
 
 	private String id;
@@ -32,7 +34,7 @@ public class VacationRatingObjekt {
 		return rating;
 	}
 	public void setRating(int rating) {
-		this.rating = this.rating + rating;
+		this.rating = this.rating + rating;	// Zählt altes rating zu neuem hinzu
 	}
 	
 }

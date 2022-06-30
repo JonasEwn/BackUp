@@ -12,20 +12,22 @@ import project.vacation.vacationWish.VacationWish;
 @Entity
 public class VacationRating {
 
-	@EmbeddedId
+	@EmbeddedId		//Zusammengesetzte id der n-zu-m Beziehung
 	VacationRatingKey id;
 	
-	@ManyToOne
-	@MapsId("id")
-	@JoinColumn(name = "id")
+	// 1-zu-m Beziehung zu der Tabelle FamilyMemeber
+	@ManyToOne	
+	@MapsId("id")	//Wählt FamilyMember nach id aus
+	@JoinColumn(name = "id")	//id aus FamilyMember
 	FamilyMember familyMember;
 	
+	// 1-zu-m Beziehung zu der Tabelle VacationWish
 	@ManyToOne
-	@MapsId("vacationWishId")
-	@JoinColumn(name = "vacation_wish_id")
+	@MapsId("vacationWishId")	//Wählt VacationWish nach vacationWishId aus
+	@JoinColumn(name = "vacation_wish_id")		//id aus VacationWish
 	VacationWish vacationWish;
 	
-	int rating;
+	int rating;	//Composite Key
 	
 	public VacationRating() {
 		

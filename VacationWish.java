@@ -13,19 +13,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import project.vacation.rating.VacationRating;
 import project.vacation.vacationPeriod.VacationPeriod;
 
+//Klasse erstellt die Tabelle VacationWish
+
 @Entity
 public class VacationWish {
 
-	@Id
+	// Attribute der Tabelle VacationWish
+	@Id		// Legt Primärschlüssel fest
 	private String vacationWishId;
 	private String description;
 	private String place;
 	
-	@OneToMany(mappedBy = "vacationWish")
-	@JsonIgnore
+	@OneToMany(mappedBy = "vacationWish")// Die m-zu-n Beziehung aufgeteilt in zwei 1-zu-n Beziehungen
+	@JsonIgnore		//Verhindert Rekursion
 	Set<VacationRating> ratings;
 	
-	@ManyToOne
+	@ManyToOne	// 1-zu-m Beziehung zu VacationPeriod
 	@JoinColumn(name = "vacationId")
 	private VacationPeriod vacationFinal;
 	

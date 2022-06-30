@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+//Lässt den Benutzer ratings hinzufügen und bearbeiten
+
 @RestController
 public class VacationRatingController {
 
 	@Autowired
-	VacationRatingService vacationRatingService;
+	VacationRatingService vacationRatingService;	// Ruft Methoden aus VacationRatingService auf
 	
+	// MEthoden um VacationRating zu bearbeite, hinzuzufügen oder anzeigen zu lassen, ...
 	@RequestMapping("/VacationRating")
 	public List<VacationRating> getVacationRatingList(){
 		return vacationRatingService.getVacationRatingList();

@@ -8,19 +8,22 @@ import javax.persistence.OneToMany;
 
 import project.vacation.vacationWish.VacationWish;
 
+// Klasse erstellt die Tabelle VacationPEriod
+
 @Entity
 public class VacationPeriod {
 
-	@Id
+	// Attribute der Tabelle FamilyMember
+	@Id		// Legt Primärschlüssel fest
 	private String vacationId;
 	private String title;
 	private String timePeriod;
 	
-	@OneToMany(mappedBy = "vacationFinal")
+	@OneToMany(mappedBy = "vacationFinal")	//1-zu-n Beziehung zu VacationWish
 	private Set<VacationWish> vacations;
 	
 	public VacationPeriod() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public VacationPeriod(String vacationId, String title, String timePeriod) {

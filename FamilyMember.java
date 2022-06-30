@@ -10,16 +10,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import project.vacation.rating.VacationRating;
 
+// Klasse erstellt die Tabelle FamilyMember
+
 @Entity
 public class FamilyMember {
 
-	@Id
+	// Attribute der Tabelle FamilyMember
+	@Id		// Legt Primärschlüssel fest
 	private String id;
 	private String name;
 	private String birthdate;
 	
-	@OneToMany(mappedBy = "familyMember")
-	@JsonIgnore
+	@OneToMany(mappedBy = "familyMember")	// Die m-zu-n Beziehung aufgeteilt in zwei 1-zu-n Beziehungen
+	@JsonIgnore		//Verhindert Rekursion
 	Set<VacationRating> ratings;
 	
 	public FamilyMember() {
@@ -35,7 +38,6 @@ public class FamilyMember {
 		
 	}
 	
-	// N -to-M Relationship erstellen
 
 	public String getName() {
 		return name;

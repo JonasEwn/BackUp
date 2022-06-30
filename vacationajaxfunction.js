@@ -6,7 +6,7 @@ $(document).ready(function(){
 	
 	$("#newFamilyMember").submit(function(){
 		postFamilyMember(event);
-		loadDataTable();
+		loadDataTable();	// Aktualisiert Tabelle
 		
 	});
 });
@@ -15,15 +15,15 @@ function postFamilyMember(event){
 	
 	// welche Daten werden benötigt
 	var formData = {
-		'id': $('input[name=IDP]').val(),
-		'name': $('input[name=VN]').val(),
-		'birthdate': $('input[name=GT]').val()
+		'id': $('input[name=IDP]').val(),	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
+		'name': $('input[name=VN]').val(),	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
+		'birthdate': $('input[name=GT]').val()	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
 	};
 	// Was soll mit den Eingegebenen Daten gemacht werden
 	$.ajax({
-		type: 'POST',
+		type: 'POST',	// Zeigt was mit den Daten gemacht werden soll
 		contentType: 'application/json',
-		url: '/FamilyMember',
+		url: '/FamilyMember',	// Wo sollen die Daten gepostet werden
 		data: JSON.stringify(formData),
 		success: function(data, textStatus, jQxhr){
 			loadDataTable();
@@ -39,11 +39,11 @@ function loadDataTable(){
 	var table = $('#famtable').DataTable({
 		destroy: true,
 		"ajax": {
-			"url": "/FamilyMember",
+			"url": "/FamilyMember",		// Adresse der Tabelle die geladen werden soll
 			"dataSrc": ""
 		},
 		"columns": [
-			{"data": "id"},
+			{"data": "id"},		// Attribute die geladen werden sollen
 			{"data": "name"},
 			{"data": "birthdate"}
 		]
@@ -54,15 +54,15 @@ function updateFamilyMember(event){
 	
 	// welche Daten werden benötigt
 	var formData = {
-		'id': $('input[name=IDP]').val(),
-		'name': $('input[name=VN]').val(),
-		'birthdate': $('input[name=GT]').val()
+		'id': $('input[name=IDP]').val(),	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
+		'name': $('input[name=VN]').val(),	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
+		'birthdate': $('input[name=GT]').val()	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
 	};
 	// Was soll mit den Eingegebenen Daten gemacht werden
 	$.ajax({
 		type: 'PUT',
 		contentType: 'application/json',
-		url: '/FamilyMember',
+		url: '/FamilyMember',	// Wo sollen die veränderten Daten hinkommen
 		data: JSON.stringify(formData),
 		success: function(data, textStatus, jQxhr){
 			loadDataTable();
@@ -82,24 +82,25 @@ $(document).ready(function(){
 	loadDataTable2();
 	
 	$("#newVacationWish").submit(function(){
-		postVacationWish(event);
-		loadDataTable2();
+		postVacationWish(event);	// Postet VacationWish daten
+		loadDataTable2();	// Aktualisiert Tabelle
 	});
 });
 
 function postVacationWish(event){
 	
+	// Attribute der VacationWish Tabelle
 	var formData = {
-		'vacationWishId': $('input[name=vacationwishid]').val(),
-		'description': $('input[name=BE]').val(),
-		'place': $('input[name=ORT]').val()
+		'vacationWishId': $('input[name=vacationwishid]').val(),	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
+		'description': $('input[name=BE]').val(),	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
+		'place': $('input[name=ORT]').val()		// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
 	};
 	
 	$.ajax({
-		type: 'POST',
-		contentType: 'application/json',
-		url: '/VacationWish',
-		data: JSON.stringify(formData), // data we want to POST
+		type: 'POST',	// Zeigt was mit den Daten gemacht werden soll
+		contentType: 'application/json',	
+		url: '/VacationWish',	// Wo sollen die Daten gepostet werden
+		data: JSON.stringify(formData),
 		success: function(data, textStatus, jQxhr) {
 			loadDataTable2();
 		},
@@ -109,15 +110,17 @@ function postVacationWish(event){
 	});
 	event.preventDefault();
 }
+
+// VacationWish Daten in Tabelle laden
 function loadDataTable2(){
 	var table = $('#urlaubtable').DataTable({
 		destroy: true,
 		"ajax": {
-			"url": "/VacationWish",
+			"url": "/VacationWish",	// Adresse der Tabelle die geladen werden soll
 			"dataSrc": ""
 		},
 		"columns":[
-			{"data": "vacationWishId"},
+			{"data": "vacationWishId"},		//Attribute der VacationWIsh Tabelle die geladen werden sollen
 			{"data": "description"},
 			{"data": "place"}
 		]
@@ -130,15 +133,15 @@ function updateVacationWish(event){
 	
 	// welche Daten werden benötigt
 	var formData = {
-		'vacationWishId': $('input[name=vacationWishId]').val(),
-		'description': $('input[name=BE]').val(),
-		'place': $('input[name=Ort]').val()
+		'vacationWishId': $('input[name=vacationwishid]').val(),	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
+		'description': $('input[name=BE]').val(),	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
+		'place': $('input[name=Ort]').val()	// Ziegt welche Daten, die auf der Webseite eingegeben wurden, zu welchem Attribut in der Datenbank gehört
 	};
 	// Was soll mit den Eingegebenen Daten gemacht werden
 	$.ajax({
-		type: 'PUT',
+		type: 'PUT',	//Updaten der VacationWish Tabelle
 		contentType: 'application/json',
-		url: '/VacationWish',
+		url: '/VacationWish',	// Wo sollen die veränderten Daten hinkommen
 		data: JSON.stringify(formData),
 		success: function(data, textStatus, jQxhr){
 			loadDataTable2();
