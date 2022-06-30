@@ -26,8 +26,8 @@
 }
 
 #body-overlay.sichtbar, .dialog.sichtbar {
-    z-index: 2;
-    opacity: 1;
+    z-index: 2; /* welcher Reihenfolge Elemente auf dem Ausgabemedium von hinten nach vorne angeordnet werden */
+    opacity: 1; /* Transparenz eines Elements */
     pointer-events: auto;
 }
 
@@ -55,7 +55,7 @@
     text-decoration: none;
 }
 
-/* Styling für den AnmeldenButton */
+/* Styling für den AnmeldenFenster */
 #anmelden-dialog {
     background-color: darkgrey;
     box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
@@ -124,8 +124,7 @@
     background-color: crimson;
 }
 
-/* Urlaubswunsch Button */
-
+/* Urlaubswunsch Fenster */
 #urlaubswunsch-dialog {
     background-color: darkgrey;
     box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
@@ -193,8 +192,7 @@
     color: white;
     background-color: crimson;
 }
-/* Urlaub buchen Button */
-
+/* Urlaub buchen Fenster */
 #urlaubbuchen-dialog {
     background-color: darkgrey;
     box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
@@ -264,7 +262,7 @@
 }
 
 
-/* Priorität */
+/* Priorität Fenster */
 #priorität-dialog {
     background-color: darkgrey;
     box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
@@ -333,7 +331,7 @@
     background-color: crimson;
 }
 
-/* Update 1 */
+/* Update Fenster 1 */
 #update1-dialog {
     background-color: darkgrey;
     box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
@@ -401,7 +399,7 @@
     color: white;
     background-color: crimson;
 }
-/* Update 2 */
+/* Update Fenster 2 */
 #update2-dialog {
     background-color: darkgrey;
     box-shadow: inset 0px 0px 10px black, 2px 2px 4px rgba(255, 255, 255, 0.1), 8px 8px 16px rgba(255, 255, 255, 0.1);
